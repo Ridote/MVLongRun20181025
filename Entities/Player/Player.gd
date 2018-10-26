@@ -4,10 +4,14 @@ const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
 const WALK_SPEED = 250 # pixels/sec
 const SIDING_CHANGE_SPEED = 10
+const STOP_ANIMATION_THRESHOLD = 15
+
 var linear_vel = Vector2()
 var target_vel = Vector2()
-var anim=""
+var prev_anim=""
  
+func _ready():
+	$AnimationPlayer.play("Idle")
 func _physics_process(delta):
 	### MOVEMENT ###
 	# Apply external forces
@@ -33,17 +37,31 @@ func read_input():
 	linear_vel.y = lerp(linear_vel.y, target_vel.y, 0.1)
 	 
 func animate():
-	var new_anim = "idle"
+	var anim = ""
+	var idle = false
 	if(abs(linear_vel.aspect()) > 1):
-		if linear_vel.x < 1:
-			new_anim = "WalkLeft"
-		elif linear_vel.x > 1:
-			new_anim = "WalkRight"
+		if linear_vel.x < -STOP_ANIMATION_THRESHOLD:
+			anim = "WalkLeft"
+		elif linear_vel.x > STOP_ANIMATION_THRESHOLD:
+			anim = "WalkRight"
+		else:
+			idle = true
 	else:
-		if linear_vel.y < 1:
-			new_anim = "WalkUp"
-		elif linear_vel.y > 1:
-			new_anim = "WalkDown"
-	if new_anim != anim:
-	    anim = new_anim
-	    $AnimationPlayer.play(anim)
+		if linear_vel.y < -STOP_ANIMATION_THRESHOLD:
+			anim = "WalkUp"
+		elif linear_vel.y > STOP_ANIMATION_THRESHOLD:
+			anim = "WalkDown"
+		else:
+			idle = true
+	if idle:
+		if(prev_anim.ends_with("Left")):
+			anim = "IdleLeft"
+		elif(prev_anim.ends_with("Right")):
+			anim = "IdleRight"
+		elif(prev_anim.ends_with("Up")):
+			anim = "IdleUp"
+		elif(prev_anim.ends_with("Down")):
+			anim = "IdleDown"
+	if anim != prev_anim:
+		$AnimationPlayer.play(anim)
+		prev_anim = anim
