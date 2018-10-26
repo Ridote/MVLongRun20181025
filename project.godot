@@ -83,6 +83,14 @@ ui_atack={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="PlayerSkill"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="EnemySkill"
+2d_physics/layer_20="Wall"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
