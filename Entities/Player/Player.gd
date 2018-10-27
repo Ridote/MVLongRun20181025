@@ -1,7 +1,7 @@
 extends Node2D
 
-const FLOOR_NORMAL = Vector2(0, -1)
-const SLOPE_SLIDE_STOP = 25.0
+const FLOOR_NORMAL = Vector2(0, 1)
+const SLOPE_SLIDE_STOP = 0.0
 const WALK_SPEED = 250 # pixels/sec
 const SIDING_CHANGE_SPEED = 10
 const STOP_ANIMATION_THRESHOLD = 15
@@ -11,13 +11,13 @@ var target_vel = Vector2()
 var prev_anim=""
  
 func _ready():
-	$AnimationPlayer.play("Idle")
+	$AnimationPlayer.play("IdleDown")
 func _physics_process(delta):
 	### MOVEMENT ###
 	# Apply external forces
 	#linear_vel += delta * EXTERNAL_FORCES
 	read_input()
-	linear_vel = $body.move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
+	move(delta)
 	animate()
 	
 func read_input():
@@ -31,11 +31,13 @@ func read_input():
 		target_vel.y -= 1
 	if Input.is_action_pressed("ui_down"):
 		target_vel.y = 1
-
+		
+func move(delta):
 	target_vel *= WALK_SPEED
 	linear_vel.x = lerp(linear_vel.x, target_vel.x, 0.1)
 	linear_vel.y = lerp(linear_vel.y, target_vel.y, 0.1)
-	 
+	linear_vel = $body.move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
+	
 func animate():
 	var anim = ""
 	var idle = false
