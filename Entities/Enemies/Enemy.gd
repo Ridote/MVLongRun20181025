@@ -1,13 +1,18 @@
 extends Node
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	add_to_group("Enemy", true)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+#float, float, first element in the tree (Node2D with script)
+func receiveDmg(_fis, _mag, _source):
+	print(get_groups())
+	OS.alert(get_name() + " receiveDmg not implemented", "Implementation error")
+
+func applyForce(_force, _source):
+	OS.alert(get_name() + " applyForce not implemented", "Implementation error")
+
+func getGlobalPosition():
+	OS.alert(get_name() + "getGlobalPosition not implemented", "Implementation error")
+
+func setGlobalPosition(_newPos):
+	OS.alert(get_name() + "setGlobalPosition not implemented", "Implementation error")

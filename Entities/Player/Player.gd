@@ -12,12 +12,12 @@ var prev_anim=""
  
 func _ready():
 	$AnimationPlayer.play("IdleDown")
-func _physics_process(delta):
+func _physics_process(_delta):
 	### MOVEMENT ###
 	# Apply external forces
 	#linear_vel += delta * EXTERNAL_FORCES
 	read_input()
-	move(delta)
+	move(_delta)
 	animate()
 	
 func read_input():
@@ -32,7 +32,7 @@ func read_input():
 	if Input.is_action_pressed("ui_down"):
 		target_vel.y = 1
 		
-func move(delta):
+func move(_delta):
 	target_vel *= WALK_SPEED
 	linear_vel.x = lerp(linear_vel.x, target_vel.x, 0.1)
 	linear_vel.y = lerp(linear_vel.y, target_vel.y, 0.1)
