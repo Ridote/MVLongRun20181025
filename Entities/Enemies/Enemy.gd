@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-	add_to_group("Enemy", true)
+	add_to_group(Constants.G_ENEMY, true)
 
 #float, float, first element in the tree (Node2D with script)
 func receiveDmg(_fis, _mag, _source):

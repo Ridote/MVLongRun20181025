@@ -19,6 +19,11 @@ config/name="MVLongRun20181025"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Constants="*res://Entities/Autoloads/Constants.gd"
+Utils="*res://Entities/Autoloads/Utils.gd"
+
 [input]
 
 ui_accept={
@@ -90,6 +95,10 @@ ui_atack={
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="EnemySkill"
 2d_physics/layer_20="Wall"
+
+[physics]
+
+2d/default_gravity_vector=Vector2( 0, 0 )
 
 [rendering]
 

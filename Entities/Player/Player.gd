@@ -1,7 +1,7 @@
 extends Node2D
 
 const FLOOR_NORMAL = Vector2(0, 1)
-const SLOPE_SLIDE_STOP = 0.0
+const SLOPE_SLIDE_STOP = 25.0
 const WALK_SPEED = 250 # pixels/sec
 const SIDING_CHANGE_SPEED = 10
 const STOP_ANIMATION_THRESHOLD = 15
@@ -12,6 +12,7 @@ var prev_anim=""
  
 func _ready():
 	$AnimationPlayer.play("IdleDown")
+	
 func _physics_process(_delta):
 	### MOVEMENT ###
 	# Apply external forces
@@ -67,3 +68,7 @@ func animate():
 	if anim != prev_anim:
 		$AnimationPlayer.play(anim)
 		prev_anim = anim
+		
+#float, float, first element in the tree (Node2D with script)
+func receiveDmg(_fis, _mag, _source):
+	print(get_groups())

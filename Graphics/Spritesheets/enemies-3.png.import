@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/link_spritesheet.png-0dd27da55c97d395774b60aa8e396a7e.stex"
+path="res://.import/enemies-3.png-920a2cd5ab0636a2ba24b816c9b6f80c.stex"
 
 [deps]
 
-source_file="res://Graphics/Spritesheets/link_spritesheet.png"
-dest_files=[ "res://.import/link_spritesheet.png-0dd27da55c97d395774b60aa8e396a7e.stex" ]
+source_file="res://Graphics/Spritesheets/enemies-3.png"
+dest_files=[ "res://.import/enemies-3.png-920a2cd5ab0636a2ba24b816c9b6f80c.stex" ]
 
 [params]
 
