@@ -11,6 +11,12 @@ func receiveDmg(_fis, _mag, _source):
 func applyForce(_force, _source):
 	OS.alert(get_name() + " applyForce not implemented", "Implementation error")
 
+func process_collisions():
+	OS.alert(get_name() + " process_collisions not implemented", "Implementation error")
+
+func process_external_collision(_collider):
+	OS.alert(get_name() + "process_external_collision not implemented", "Implementation error")
+
 func getGlobalPosition():
 	OS.alert(get_name() + "getGlobalPosition not implemented", "Implementation error")
 

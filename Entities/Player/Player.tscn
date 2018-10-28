@@ -258,9 +258,10 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="body" type="KinematicBody2D" parent="."]
+position = Vector2( 0, 0.926575 )
 input_pickable = false
 collision_layer = 1
-collision_mask = 524288
+collision_mask = 524292
 collision/safe_margin = 0.08
 motion/sync_to_physics = false
 _sections_unfolded = [ "Collision" ]

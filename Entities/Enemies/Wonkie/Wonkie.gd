@@ -36,10 +36,19 @@ func move(_delta):
 func process_collisions():
 	var collider = null
 	for i in range($body.get_slide_count()):
-		collider = $body.get_slide_collision(i).get_collider()
+		collider = $body.get_slide_collision(i).get_collider().get_parent()
 		if(collider.is_in_group(Constants.G_PLAYER)):
 			collider.receiveDmg(fisAtack, magAtack, self)
-	
+
+#Process a collision not detected by the enemy but by the external entity
+func process_external_collision(collider):
+	collider.receiveDmg(fisAtack, magAtack, self)
+
+func getGlobalPosition():
+	return $body.global_position
+
+func setGlobalPosition(newPos):
+	$body.global_position = newPos
 
 func _on_NextPositionLimit_timeout():
 	nextPosition = Utils.calculateRandomPosition($body.global_position, maxDistNextPos, minDistNextPos)
