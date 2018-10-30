@@ -32,5 +32,5 @@ func setGlobalPosition(_newPos):
 func die():
 	OS.alert(get_name() + "die not implemented", "Implementation error")
 	
-func playAnimation(anim):
+func playAnimation(_anim):
 	OS.alert(get_name() + "playAnimation not implemented", "Implementation error")
