@@ -56,7 +56,10 @@ func process_skills():
 		sword_dash()
 	
 func move(_delta):
-	target_vel *= WALK_SPEED
+	if !atack:
+		target_vel *= WALK_SPEED
+	else:
+		target_vel *= 0
 	linear_vel.x = lerp(linear_vel.x, target_vel.x + externalImpulse.x, 0.1)
 	linear_vel.y = lerp(linear_vel.y, target_vel.y + externalImpulse.y, 0.1)
 	linear_vel = $body.move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)

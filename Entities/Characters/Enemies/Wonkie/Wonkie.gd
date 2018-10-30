@@ -24,8 +24,9 @@ func _ready():
 	nextPosition = Utils.calculateRandomPosition($body.global_position, maxDistNextPos, minDistNextPos)
 	
 func _physics_process(_delta):
-	move(_delta)
-	process_collisions()
+	if !dead:
+		move(_delta)
+		process_collisions()
 	
 func move(_delta):	
 	var direction = (nextPosition-$body.global_position)
@@ -53,11 +54,19 @@ func process_collisions():
 func process_external_collision(collider):
 	collider.receiveDmg(fisAtack, magAtack, self)
 
-func receiveDmg(_fis, _mag, source):
+func receiveDmg(fis, mag, source):
 	var sourcePos = source.getGlobalPosition()
 	var direction = ($body.global_position - sourcePos).normalized()
+	hp -= fis + mag
+	if hp < 0:
+		die()
 	externalImpulse += direction*EXTERNAL_IMPULSE
-	
+
+func die():
+	$AnimationPlayer.play("death")
+	$body.collision_layer = 0
+	$body.collision_mask = 0
+	dead = true
 
 func getGlobalPosition():
 	return $body.global_position
@@ -67,3 +76,7 @@ func setGlobalPosition(newPos):
 
 func _on_NextPositionLimit_timeout():
 	nextPosition = Utils.calculateRandomPosition($body.global_position, maxDistNextPos, minDistNextPos)
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "death":
+		queue_free()
