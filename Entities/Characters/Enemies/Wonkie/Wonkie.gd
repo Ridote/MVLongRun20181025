@@ -13,9 +13,6 @@ var externalImpulse = Vector2(0,0)
 var maxDistNextPos = 50
 var minDistNextPos = 10
 
-var magAtack = 0
-var fisAtack = 5
-
 var linear_vel = Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
@@ -24,7 +21,7 @@ func _ready():
 	nextPosition = Utils.calculateRandomPosition($body.global_position, maxDistNextPos, minDistNextPos)
 	
 func _physics_process(_delta):
-	if !dead:
+	if !_dead:
 		move(_delta)
 		process_collisions()
 	
@@ -48,17 +45,17 @@ func process_collisions():
 	for i in range($body.get_slide_count()):
 		collider = $body.get_slide_collision(i).get_collider().get_parent()
 		if(collider.is_in_group(Constants.G_PLAYER)):
-			collider.receiveDmg(fisAtack, magAtack, self)
+			collider.receiveDmg(_fisAtack, _magAtack, self)
 
 #Process a collision not detected by the enemy but by the external entity
 func process_external_collision(collider):
-	collider.receiveDmg(fisAtack, magAtack, self)
+	collider.receiveDmg(_fisAtack, _magAtack, self)
 
 func receiveDmg(fis, mag, source):
 	var sourcePos = source.getGlobalPosition()
 	var direction = ($body.global_position - sourcePos).normalized()
-	hp -= fis + mag
-	if hp < 0:
+	_hp -= fis + mag
+	if _hp < 0:
 		die()
 	externalImpulse += direction*EXTERNAL_IMPULSE
 
@@ -66,7 +63,7 @@ func die():
 	$AnimationPlayer.play("death")
 	$body.collision_layer = 0
 	$body.collision_mask = 0
-	dead = true
+	_dead = true
 
 func getGlobalPosition():
 	return $body.global_position

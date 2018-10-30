@@ -1,8 +1,10 @@
 extends Node
 
-var hp = 10
-var energy = 10
-var dead = false
+var _hp = 10
+var _energy = 10
+var _fisAtack = 5
+var _magAtack = 0
+var _dead = false
 
 func _ready():
 	add_to_group(Constants.G_CHARACTER, true)
@@ -29,3 +31,6 @@ func setGlobalPosition(_newPos):
 
 func die():
 	OS.alert(get_name() + "die not implemented", "Implementation error")
+	
+func playAnimation(anim):
+	OS.alert(get_name() + "playAnimation not implemented", "Implementation error")

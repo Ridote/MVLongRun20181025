@@ -50,7 +50,7 @@ func read_input():
 		target_vel.y = 1
 	if Input.is_action_pressed("ui_atack"):
 		atack = true
-		
+	target_vel = target_vel.normalized()
 func process_skills():
 	if atack && !cooldown:
 		sword_dash()
