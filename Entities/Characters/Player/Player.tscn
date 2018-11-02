@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Entities/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/Spritesheets/link_spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://Entities/GUI/HUD/HUD.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -851,6 +852,8 @@ process_mode = 1
 wait_time = 0.5
 one_shot = true
 autostart = false
+
+[node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [connection signal="body_entered" from="body/Sword" to="." method="_on_Sword_body_entered"]
 [connection signal="timeout" from="SwordDash" to="." method="_on_SwordDash_timeout"]

@@ -11,7 +11,7 @@ extents = Vector2( 8.32568, 10.7008 )
 [sub_resource type="Animation" id=2]
 
 resource_name = "death"
-length = 1.0
+length = 1.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -25,6 +25,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Rect2( 103, 616, 18, 16 ), Rect2( 121, 618, 14, 13 ), Rect2( 138, 618, 12, 13 ), Rect2( 156, 620, 8, 8 ), Rect2( 169, 621, 6, 6 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -81,5 +95,4 @@ wait_time = 3.0
 one_shot = false
 autostart = true
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="NextPositionLimit" to="." method="_on_NextPositionLimit_timeout"]

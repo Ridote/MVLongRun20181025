@@ -73,7 +73,3 @@ func setGlobalPosition(newPos):
 
 func _on_NextPositionLimit_timeout():
 	nextPosition = Utils.calculateRandomPosition($body.global_position, maxDistNextPos, minDistNextPos)
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "death":
-		queue_free()

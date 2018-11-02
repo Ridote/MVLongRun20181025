@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=2]
 
-[ext_resource path="res://Fonts/pixel10.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/progressBar.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Graphics/GUI/Bars_Borders.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/pixel16.tres" type="DynamicFont" id=3]
 
@@ -50,5 +50,5 @@ ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 ProgressBar/fonts/font = ExtResource( 1 )
 ProgressBar/styles/bg = SubResource( 1 )
 ProgressBar/styles/fg = SubResource( 2 )
-_sections_unfolded = [ "ProgressBar/fonts/font", "default_font" ]
+_sections_unfolded = [ "ProgressBar", "ProgressBar/fonts", "ProgressBar/fonts/font", "ProgressBar/styles", "default_font" ]
 

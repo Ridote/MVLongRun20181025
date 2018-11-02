@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 Constants="*res://Entities/Autoloads/Constants.gd"
 Utils="*res://Entities/Autoloads/Utils.gd"
+PlayerStats="*res://Entities/Autoloads/PlayerStats.gd"
 
 [input]
 
