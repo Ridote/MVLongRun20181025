@@ -179,13 +179,12 @@ min_value = 0.0
 max_value = 100.0
 step = 1.0
 page = 0.0
-value = 50.0
+value = 100.0
 exp_edit = false
-rounded = false
+rounded = true
 allow_greater = false
 allow_lesser = false
 percent_visible = true
-_sections_unfolded = [ "Rect" ]
 
 [node name="EnergyContainer" type="HBoxContainer" parent="Control/VBoxContainer/HBoxContainer/HPEnergy"]
 anchor_left = 0.0
@@ -245,7 +244,7 @@ min_value = 0.0
 max_value = 100.0
 step = 1.0
 page = 0.0
-value = 50.0
+value = 1.0
 exp_edit = false
 rounded = false
 allow_greater = false

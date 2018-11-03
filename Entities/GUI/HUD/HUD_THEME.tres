@@ -50,5 +50,5 @@ ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 ProgressBar/fonts/font = ExtResource( 1 )
 ProgressBar/styles/bg = SubResource( 1 )
 ProgressBar/styles/fg = SubResource( 2 )
-_sections_unfolded = [ "ProgressBar", "ProgressBar/fonts", "ProgressBar/fonts/font", "ProgressBar/styles", "default_font" ]
+_sections_unfolded = [ "ProgressBar", "ProgressBar/fonts/font", "ProgressBar/styles", "ProgressBar/styles/fg", "default_font" ]
 

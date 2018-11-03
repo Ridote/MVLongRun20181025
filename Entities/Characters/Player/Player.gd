@@ -30,10 +30,11 @@ func _ready():
 	$body/Sword.collision_mask = 0
 	$body/Sword.collision_layer = 0
 	
-func _physics_process(_delta):
+func _physics_process(delta):
+	PlayerStats.player_energy += 100*delta
 	read_input()
 	process_skills()
-	move(_delta)
+	move(delta)
 	process_collisions()
 	animate()
 	

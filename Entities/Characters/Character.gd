@@ -1,3 +1,5 @@
+#warnings-disable
+
 extends Node
 
 var _hp = 10
