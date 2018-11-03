@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/Spritesheets/link_spritesheet.png" type="Texture" id=2]
@@ -17,9 +17,9 @@ extents = Vector2( 12.6436, 3.39516 )
 [sub_resource type="Animation" id=3]
 
 resource_name = "AtackDown"
-length = 0.3
+length = 0.5
 loop = false
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("body/Sprite:region_rect")
 tracks/0/interp = 1
@@ -92,13 +92,67 @@ tracks/5/keys = {
 "update": 1,
 "values": [ -74.1232, -74.1232, -91.2016 ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish_atack"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("body/Sword:collision_mask")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 0 ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finishCasting"
+} ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_atack_cooldown"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 
 resource_name = "AtackLeft"
-length = 0.5
+length = 0.4
 loop = false
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("body/Sprite:region_rect")
 tracks/0/interp = 1
@@ -171,13 +225,67 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish_atack"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("body/Sword:collision_mask")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 0 ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finishCasting"
+} ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.35 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_atack_cooldown"
+} ]
+}
 
 [sub_resource type="Animation" id=5]
 
 resource_name = "AtackRight"
-length = 0.5
+length = 0.4
 loop = false
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("body/Sprite:region_rect")
 tracks/0/interp = 1
@@ -250,12 +358,66 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish_atack"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("body/Sword:collision_mask")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 0 ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finishCasting"
+} ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.35 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_atack_cooldown"
+} ]
+}
 
 [sub_resource type="Animation" id=6]
 
-length = 0.3
+length = 0.4
 loop = false
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("body/Sprite:region_rect")
 tracks/0/interp = 1
@@ -328,8 +490,97 @@ tracks/5/keys = {
 "update": 0,
 "values": [ -78.7586, -69.3368, -89.4917 ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish_atack"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("body/Sword:collision_mask")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 0 ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finishCasting"
+} ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.35 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_atack_cooldown"
+} ]
+}
 
 [sub_resource type="Animation" id=7]
+
+resource_name = "Blink"
+length = 2.0
+loop = false
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.45 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finishCasting"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.45 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_blink_cooldown"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
 
 length = 0.1
 loop = false
@@ -383,7 +634,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
 length = 0.1
 loop = false
@@ -437,7 +688,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 
 length = 0.1
 loop = false
@@ -491,7 +742,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 
 length = 0.1
 loop = false
@@ -545,7 +796,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 
 length = 0.75
 loop = true
@@ -599,7 +850,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 
 length = 0.7
 loop = true
@@ -653,7 +904,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 
 length = 0.7
 loop = true
@@ -707,7 +958,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 
 length = 0.75
 loop = true
@@ -764,7 +1015,6 @@ tracks/3/keys = {
 [node name="Player" type="Node2D"]
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="body" type="KinematicBody2D" parent="."]
 position = Vector2( 0, 0.926575 )
@@ -773,14 +1023,11 @@ collision_layer = 1
 collision_mask = 524292
 collision/safe_margin = 0.08
 motion/sync_to_physics = false
-_sections_unfolded = [ "Collision" ]
 
 [node name="Sprite" type="Sprite" parent="body"]
-position = Vector2( 5, -22 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 146, 315, 42, 75 )
-_sections_unfolded = [ "Region", "Transform" ]
+region_rect = Rect2( 0, 315, 42, 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="body"]
 shape = SubResource( 1 )
@@ -810,22 +1057,20 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 
 [node name="Sword" type="Area2D" parent="body"]
-position = Vector2( -5.39752, -27.6571 )
-rotation = -1.3746
+position = Vector2( 5.26316, 18.8771 )
+rotation = -1.29369
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision_layer = 2
-collision_mask = 524300
+collision_mask = 0
 audio_bus_override = false
 audio_bus_name = "Master"
-_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="body/Sword"]
 shape = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
@@ -837,23 +1082,17 @@ anims/AtackDown = SubResource( 3 )
 anims/AtackLeft = SubResource( 4 )
 anims/AtackRight = SubResource( 5 )
 anims/AtackUp = SubResource( 6 )
-anims/IdleDown = SubResource( 7 )
-anims/IdleLeft = SubResource( 8 )
-anims/IdleRight = SubResource( 9 )
-anims/IdleUp = SubResource( 10 )
-anims/WalkDown = SubResource( 11 )
-anims/WalkLeft = SubResource( 12 )
-anims/WalkRight = SubResource( 13 )
-anims/WalkUp = SubResource( 14 )
+anims/Blink = SubResource( 7 )
+anims/IdleDown = SubResource( 8 )
+anims/IdleLeft = SubResource( 9 )
+anims/IdleRight = SubResource( 10 )
+anims/IdleUp = SubResource( 11 )
+anims/WalkDown = SubResource( 12 )
+anims/WalkLeft = SubResource( 13 )
+anims/WalkRight = SubResource( 14 )
+anims/WalkUp = SubResource( 15 )
 blend_times = [  ]
-
-[node name="SwordDash" type="Timer" parent="."]
-process_mode = 1
-wait_time = 0.5
-one_shot = true
-autostart = false
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [connection signal="body_entered" from="body/Sword" to="." method="_on_Sword_body_entered"]
-[connection signal="timeout" from="SwordDash" to="." method="_on_SwordDash_timeout"]

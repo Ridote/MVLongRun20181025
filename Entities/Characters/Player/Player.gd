@@ -1,5 +1,7 @@
 extends "res://Entities/Characters/Character.gd"
 
+var blink_skill_factory = preload("res://Entities/Skills/Blink.tscn")
+
 const FLOOR_NORMAL = Vector2(0, 1)
 const SLOPE_SLIDE_STOP = 25.0
 const WALK_SPEED = 250 # pixels/sec
@@ -17,12 +19,15 @@ var prev_anim="IdleDown"
 
 var externalImpulse = Vector2()
 
+#Skills
+var attackAttemp = false
+var attacking = false
+var attackCooldown = false
 
-var atack = false
-var cooldown = false
+var blink = false
+var blinkCooldown = false
 
-var sword_collision_mask = 0
-var sword_collision_layer = 0
+var casting = false
 
 func _ready():
 	PlayerStats.player_hp = PlayerStats.player_hp_max
@@ -30,8 +35,7 @@ func _ready():
 	
 	add_to_group(Constants.G_PLAYER)
 	$AnimationPlayer.play("IdleDown")
-	sword_collision_mask = $body/Sword.collision_mask
-	sword_collision_layer = $body/Sword.collision_layer
+	
 	$body/Sword.collision_mask = 0
 	$body/Sword.collision_layer = 0
 	
@@ -57,14 +61,20 @@ func read_input():
 	if Input.is_action_pressed("ui_down"):
 		target_vel.y = 1
 	if Input.is_action_pressed("ui_atack"):
-		atack = true
+		attackAttemp = true
+	if Input.is_action_pressed("ui_blink"):
+		blink = true
+		
 	target_vel = target_vel.normalized()
 func process_skills():
-	if atack && !cooldown:
-		sword_dash()
+	#print(str(attackAttemp) + ", " + str(casting) + ", " + str(attackCooldown))
+	if attackAttemp && !casting && !attackCooldown:
+		skill_sword_dash()
+	if blink && !casting && !blinkCooldown:
+		skill_blink()
 	
 func move(_delta):
-	if !atack:
+	if !attacking:
 		target_vel *= WALK_SPEED
 	else:
 		target_vel *= 0
@@ -75,11 +85,15 @@ func move(_delta):
 	linear_vel = linear_vel.clamped(MAX_SPEED_AND_IMPULSE)
 	linear_vel = $body.move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 	externalImpulse /= IMPULSE_MITIGATION_FACTOR
-	
+
+func finishCasting():
+	casting = false
+
 func animate():
 	var anim = ""
 	var idle = false
-	if atack:
+	
+	if attacking:
 		match(prev_anim):
 			"WalkLeft", "IdleLeft":
 				$AnimationPlayer.play("AtackLeft")
@@ -138,24 +152,48 @@ func receiveDmg(_fis, _mag, _source):
 	externalImpulse += direction*EXTERNAL_IMPULSE
 	PlayerStats.player_hp -= _fis + _mag
 
-func sword_dash():
-	$body/Sword.collision_mask = sword_collision_mask
-	$SwordDash.start()
-	cooldown = true
+################################################ ATACK
+func skill_sword_dash():
+	print("Atack")
 	PlayerStats.player_energy -= 5
-
-func _on_SwordDash_timeout():
-	$body/Sword.collision_mask = 0
-	atack = false
-	cooldown = false
-
-func _on_Sword_body_entered(body):
-	var collider = body.get_parent()
-	if(collider.is_in_group(Constants.G_ENEMY)):
-		collider.receiveDmg(5,0,self)
+	casting = true
+	attackCooldown = true
+	attacking = true
 	
+func finish_atack():
+	attacking = false
+
+func reset_atack_cooldown():
+	attackCooldown = false
+	
+################################################ Blink
+func skill_blink():
+	var blink = blink_skill_factory.instance()
+	# the parent can be get_tree().get_root() or some other node
+	get_tree().get_root().add_child(blink)
+	PlayerStats.player_energy -= blink.getCost()
+	blink.assign_parent(self)
+	blink.play($body.global_position + linear_vel.normalized()*50)
+	casting = true
+	blinkCooldown = true
+	$AnimationPlayer.play("Blink")
+
+func reset_blink_cooldown():
+	blinkCooldown = false
+
+################################################ Position
 func getGlobalPosition():
 	return $body.global_position
 
 func setGlobalPosition(newPos):
 	$body.global_position = newPos
+	
+################################################ Aux
+func _on_Sword_body_entered(body):
+	var collider = body.get_parent()
+	if(collider.is_in_group(Constants.G_ENEMY)):
+		collider.receiveDmg(5,0,self)
+
+func _animate_with_parameter(animation):
+	if animation != prev_anim:
+		$AnimationPlayer.play(animation)
