@@ -9,6 +9,8 @@ const STOP_ANIMATION_THRESHOLD = 15
 const EXTERNAL_IMPULSE = 4000
 const IMPULSE_MITIGATION_FACTOR = 2
 
+const MAX_SPEED_AND_IMPULSE = 400
+
 var linear_vel = Vector2()
 var target_vel = Vector2()
 var prev_anim="IdleDown"
@@ -23,6 +25,9 @@ var sword_collision_mask = 0
 var sword_collision_layer = 0
 
 func _ready():
+	PlayerStats.player_hp = PlayerStats.player_hp_max
+	PlayerStats.player_energy = PlayerStats.player_energy_max
+	
 	add_to_group(Constants.G_PLAYER)
 	$AnimationPlayer.play("IdleDown")
 	sword_collision_mask = $body/Sword.collision_mask
@@ -31,7 +36,9 @@ func _ready():
 	$body/Sword.collision_layer = 0
 	
 func _physics_process(delta):
-	PlayerStats.player_energy += 100*delta
+	PlayerStats.player_energy += PlayerStats.player_energy_recovery*delta
+	PlayerStats.player_hp += PlayerStats.player_hp_recovery*delta
+	
 	read_input()
 	process_skills()
 	move(delta)
@@ -63,6 +70,9 @@ func move(_delta):
 		target_vel *= 0
 	linear_vel.x = lerp(linear_vel.x, target_vel.x + externalImpulse.x, 0.1)
 	linear_vel.y = lerp(linear_vel.y, target_vel.y + externalImpulse.y, 0.1)
+	
+	#We clamp the linear velocity
+	linear_vel = linear_vel.clamped(MAX_SPEED_AND_IMPULSE)
 	linear_vel = $body.move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 	externalImpulse /= IMPULSE_MITIGATION_FACTOR
 	
@@ -126,11 +136,13 @@ func receiveDmg(_fis, _mag, _source):
 	var sourcePos = _source.getGlobalPosition()
 	var direction = ($body.global_position - sourcePos).normalized()
 	externalImpulse += direction*EXTERNAL_IMPULSE
+	PlayerStats.player_hp -= _fis + _mag
 
 func sword_dash():
 	$body/Sword.collision_mask = sword_collision_mask
 	$SwordDash.start()
 	cooldown = true
+	PlayerStats.player_energy -= 5
 
 func _on_SwordDash_timeout():
 	$body/Sword.collision_mask = 0
