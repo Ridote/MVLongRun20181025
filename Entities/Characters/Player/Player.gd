@@ -68,7 +68,6 @@ func read_input():
 	target_vel = target_vel.normalized()
 func process_skills():
 	if attackAttemp && !casting && !attackCooldown:
-		print(str(attackAttemp) + ", " + str(casting) + ", " + str(attackCooldown))
 		skill_sword_dash()
 	if blinkAttemp && !casting && !blinkCooldown:
 		skill_blink()
@@ -110,7 +109,7 @@ func animate():
 			_:
 				pass
 		return
-			
+
 	if(abs(linear_vel.aspect()) > 1):
 		if linear_vel.x < -STOP_ANIMATION_THRESHOLD:
 			anim = "WalkLeft"
@@ -154,6 +153,8 @@ func receiveDmg(_fis, _mag, _source):
 
 ################################################ ATACK
 func skill_sword_dash():
+	if PlayerStats.player_energy < 5:
+		return
 	PlayerStats.player_energy -= 5
 	casting = true
 	attackCooldown = true

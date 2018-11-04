@@ -1,13 +1,24 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Blink.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Skills/Boomerang.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/Spritesheets/link_spritesheet.png" type="Texture" id=2]
 
 [node name="Blink" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="body" type="KinematicBody2D" parent="."]
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+motion/sync_to_physics = false
+
+[node name="Sprite" type="Sprite" parent="body"]
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 85, 1306, 21, 20 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="body"]
+build_mode = 0
+polygon = PoolVector2Array( -11, 0, 0, 0, 0, 10, 11, 10, 11, -10, -11, -10 )
 
