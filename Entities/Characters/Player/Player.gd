@@ -24,7 +24,7 @@ var attackAttemp = false
 var attacking = false
 var attackCooldown = false
 
-var blink = false
+var blinkAttemp = false
 var blinkCooldown = false
 
 var casting = false
@@ -34,7 +34,7 @@ func _ready():
 	PlayerStats.player_energy = PlayerStats.player_energy_max
 	
 	add_to_group(Constants.G_PLAYER)
-	$AnimationPlayer.play("IdleDown")
+	$Animations/AnimationMovement.play("IdleDown")
 	
 	$body/Sword.collision_mask = 0
 	$body/Sword.collision_layer = 0
@@ -60,19 +60,19 @@ func read_input():
 		target_vel.y -= 1
 	if Input.is_action_pressed("ui_down"):
 		target_vel.y = 1
-	if Input.is_action_pressed("ui_atack"):
+	if Input.is_action_just_pressed("ui_atack"):
 		attackAttemp = true
 	if Input.is_action_pressed("ui_blink"):
-		blink = true
+		blinkAttemp = true
 		
 	target_vel = target_vel.normalized()
 func process_skills():
-	#print(str(attackAttemp) + ", " + str(casting) + ", " + str(attackCooldown))
 	if attackAttemp && !casting && !attackCooldown:
+		print(str(attackAttemp) + ", " + str(casting) + ", " + str(attackCooldown))
 		skill_sword_dash()
-	if blink && !casting && !blinkCooldown:
+	if blinkAttemp && !casting && !blinkCooldown:
 		skill_blink()
-	
+
 func move(_delta):
 	if !attacking:
 		target_vel *= WALK_SPEED
@@ -96,16 +96,16 @@ func animate():
 	if attacking:
 		match(prev_anim):
 			"WalkLeft", "IdleLeft":
-				$AnimationPlayer.play("AtackLeft")
+				$Animations/AnimationSword.play("AtackLeft")
 				prev_anim = "AtackLeft"
 			"WalkRight", "IdleRight":
-				$AnimationPlayer.play("AtackRight")
+				$Animations/AnimationSword.play("AtackRight")
 				prev_anim = "AtackRight"
 			"WalkUp", "IdleUp":
-				$AnimationPlayer.play("AtackUp")
+				$Animations/AnimationSword.play("AtackUp")
 				prev_anim = "AtackUp"
 			"WalkDown", "IdleDown":
-				$AnimationPlayer.play("AtackDown")
+				$Animations/AnimationSword.play("AtackDown")
 				prev_anim = "AtackDown"
 			_:
 				pass
@@ -135,7 +135,7 @@ func animate():
 		elif(prev_anim.ends_with("Down")):
 			anim = "IdleDown"
 	if anim != prev_anim:
-		$AnimationPlayer.play(anim)
+		$Animations/AnimationMovement.play(anim)
 		prev_anim = anim
 
 func process_collisions():
@@ -154,32 +154,37 @@ func receiveDmg(_fis, _mag, _source):
 
 ################################################ ATACK
 func skill_sword_dash():
-	print("Atack")
 	PlayerStats.player_energy -= 5
 	casting = true
 	attackCooldown = true
 	attacking = true
-	
+
 func finish_atack():
 	attacking = false
 
 func reset_atack_cooldown():
 	attackCooldown = false
+	#We reset any attemp to atack
+	attackAttemp = false
 	
 ################################################ Blink
 func skill_blink():
 	var blink = blink_skill_factory.instance()
 	# the parent can be get_tree().get_root() or some other node
 	get_tree().get_root().add_child(blink)
+	if blink.getCost() > PlayerStats.player_energy:
+		return
 	PlayerStats.player_energy -= blink.getCost()
 	blink.assign_parent(self)
-	blink.play($body.global_position + linear_vel.normalized()*50)
+	blink.play($body.global_position + linear_vel.normalized()*100)
 	casting = true
 	blinkCooldown = true
-	$AnimationPlayer.play("Blink")
+	$Animations/AnimationBlink.play("Blink")
+	
 
 func reset_blink_cooldown():
 	blinkCooldown = false
+	blinkAttemp = false
 
 ################################################ Position
 func getGlobalPosition():

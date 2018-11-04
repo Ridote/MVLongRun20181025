@@ -5,3 +5,4 @@ func _ready():
 
 func play(pos):
 	parent.setGlobalPosition(pos)
+	queue_free()

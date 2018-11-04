@@ -14,579 +14,13 @@ extents = Vector2( 15.376, 18.0592 )
 custom_solver_bias = 0.0
 extents = Vector2( 12.6436, 3.39516 )
 
-[sub_resource type="Animation" id=3]
-
-resource_name = "AtackDown"
-length = 0.5
-loop = false
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("body/Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 0, 315, 42, 75 ), Rect2( 42, 315, 42, 75 ), Rect2( 84, 315, 42, 75 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("body/Sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("body/Sprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("body/Sword:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("body/Sword:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 5.26316, 18.8771 ), Vector2( 2.94994, 24.7887 ), Vector2( 12.9739, 28.644 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("body/Sword:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ -74.1232, -74.1232, -91.2016 ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "finish_atack"
-} ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("body/Sword:collision_mask")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 12, 0 ]
-}
-tracks/8/type = "method"
-tracks/8/path = NodePath(".")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "finishCasting"
-} ]
-}
-tracks/9/type = "method"
-tracks/9/path = NodePath(".")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "reset_atack_cooldown"
-} ]
-}
-
-[sub_resource type="Animation" id=4]
-
-resource_name = "AtackLeft"
-length = 0.4
-loop = false
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("body/Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 39, 392, 87, 48 ), Rect2( 128, 392, 87, 48 ), Rect2( 217, 392, 87, 48 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("body/Sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( -1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("body/Sprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( -22, -2 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("body/Sword:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( -17.3973, 7.88807 ), Vector2( -25.0522, -3.01426 ), Vector2( -39.202, 3.71271 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("body/Sword:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 0.0, 24.1989, 0.0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("body/Sword:monitoring")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.25 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "finish_atack"
-} ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("body/Sword:collision_mask")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 12, 0 ]
-}
-tracks/8/type = "method"
-tracks/8/path = NodePath(".")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0.25 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "finishCasting"
-} ]
-}
-tracks/9/type = "method"
-tracks/9/path = NodePath(".")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0.35 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "reset_atack_cooldown"
-} ]
-}
-
-[sub_resource type="Animation" id=5]
-
-resource_name = "AtackRight"
-length = 0.4
-loop = false
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("body/Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 39, 392, 87, 48 ), Rect2( 128, 392, 87, 48 ), Rect2( 217, 392, 87, 48 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("body/Sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("body/Sprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 22, -2 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("body/Sword:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 17.2206, 7.81224 ), Vector2( 25.9594, -4.01087 ), Vector2( 37.7825, 4.2139 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("body/Sword:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 0.0, -18.4753, -0.25612 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("body/Sword:monitoring")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.25 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "finish_atack"
-} ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("body/Sword:collision_mask")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 12, 0 ]
-}
-tracks/8/type = "method"
-tracks/8/path = NodePath(".")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0.25 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "finishCasting"
-} ]
-}
-tracks/9/type = "method"
-tracks/9/path = NodePath(".")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0.35 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "reset_atack_cooldown"
-} ]
-}
-
-[sub_resource type="Animation" id=6]
-
-length = 0.4
-loop = false
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("body/Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 146, 315, 42, 75 ), Rect2( 188, 315, 42, 75 ), Rect2( 230, 315, 42, 75 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("body/Sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("body/Sprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 5, -22 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("body/Sword:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("body/Sword:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.101, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -5.39752, -27.6571 ), Vector2( -1.52588e-005, -39.4802 ), Vector2( -8.22479, -45.3917 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("body/Sword:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ -78.7586, -69.3368, -89.4917 ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.25 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "finish_atack"
-} ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("body/Sword:collision_mask")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 12, 0 ]
-}
-tracks/8/type = "method"
-tracks/8/path = NodePath(".")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0.25 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "finishCasting"
-} ]
-}
-tracks/9/type = "method"
-tracks/9/path = NodePath(".")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0.35 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "reset_atack_cooldown"
-} ]
-}
-
-[sub_resource type="Animation" id=7]
-
-resource_name = "Blink"
-length = 2.0
-loop = false
-step = 0.05
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.45 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "finishCasting"
-} ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 1.45 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "reset_blink_cooldown"
-} ]
-}
-
 [sub_resource type="Animation" id=8]
 
 length = 0.1
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("body/Sprite:region_rect")
+tracks/0/path = NodePath("../body/Sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -598,7 +32,7 @@ tracks/0/keys = {
 "values": [ Rect2( 108, 0, 32, 48 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/path = NodePath("../body/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -610,7 +44,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("body/Sprite:position")
+tracks/2/path = NodePath("../body/Sprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -622,7 +56,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("body/Sword:monitoring")
+tracks/3/path = NodePath("../body/Sword:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -640,7 +74,7 @@ length = 0.1
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("body/Sprite:region_rect")
+tracks/0/path = NodePath("../body/Sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -652,7 +86,7 @@ tracks/0/keys = {
 "values": [ Rect2( 72, 104, 32, 48 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/path = NodePath("../body/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -664,7 +98,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("body/Sprite:position")
+tracks/2/path = NodePath("../body/Sprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -676,7 +110,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("body/Sword:monitoring")
+tracks/3/path = NodePath("../body/Sword:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -694,7 +128,7 @@ length = 0.1
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("body/Sprite:region_rect")
+tracks/0/path = NodePath("../body/Sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -706,7 +140,7 @@ tracks/0/keys = {
 "values": [ Rect2( 72, 104, 32, 48 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/path = NodePath("../body/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -718,7 +152,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("body/Sprite:position")
+tracks/2/path = NodePath("../body/Sprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -730,7 +164,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("body/Sword:monitoring")
+tracks/3/path = NodePath("../body/Sword:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -748,7 +182,7 @@ length = 0.1
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("body/Sprite:region_rect")
+tracks/0/path = NodePath("../body/Sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -760,7 +194,7 @@ tracks/0/keys = {
 "values": [ Rect2( 72, 52, 32, 48 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/path = NodePath("../body/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -772,7 +206,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("body/Sprite:position")
+tracks/2/path = NodePath("../body/Sprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -784,7 +218,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("body/Sword:monitoring")
+tracks/3/path = NodePath("../body/Sword:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -802,7 +236,7 @@ length = 0.75
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("body/Sprite:region_rect")
+tracks/0/path = NodePath("../body/Sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -814,7 +248,7 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 0, 32, 48 ), Rect2( 36, 0, 32, 48 ), Rect2( 72, 0, 32, 48 ), Rect2( 108, 0, 32, 48 ), Rect2( 144, 0, 32, 48 ), Rect2( 180, 0, 32, 48 ), Rect2( 216, 0, 32, 48 ), Rect2( 252, 0, 32, 48 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/path = NodePath("../body/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -826,7 +260,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("body/Sprite:position")
+tracks/2/path = NodePath("../body/Sprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -838,7 +272,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("body/Sword:monitoring")
+tracks/3/path = NodePath("../body/Sword:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -856,7 +290,7 @@ length = 0.7
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("body/Sprite:region_rect")
+tracks/0/path = NodePath("../body/Sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -868,7 +302,7 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 104, 32, 48 ), Rect2( 36, 104, 32, 48 ), Rect2( 72, 104, 32, 48 ), Rect2( 108, 104, 32, 48 ), Rect2( 144, 104, 32, 48 ), Rect2( 180, 104, 32, 48 ), Rect2( 216, 104, 32, 48 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/path = NodePath("../body/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -880,7 +314,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("body/Sprite:position")
+tracks/2/path = NodePath("../body/Sprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -892,7 +326,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("body/Sword:monitoring")
+tracks/3/path = NodePath("../body/Sword:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -910,7 +344,7 @@ length = 0.7
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("body/Sprite:region_rect")
+tracks/0/path = NodePath("../body/Sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -922,7 +356,7 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 104, 32, 48 ), Rect2( 36, 104, 32, 48 ), Rect2( 72, 104, 32, 48 ), Rect2( 108, 104, 32, 48 ), Rect2( 144, 104, 32, 48 ), Rect2( 180, 104, 32, 48 ), Rect2( 216, 104, 32, 48 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/path = NodePath("../body/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -934,7 +368,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("body/Sprite:position")
+tracks/2/path = NodePath("../body/Sprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -946,7 +380,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("body/Sword:monitoring")
+tracks/3/path = NodePath("../body/Sword:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -964,7 +398,7 @@ length = 0.75
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("body/Sprite:region_rect")
+tracks/0/path = NodePath("../body/Sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -976,7 +410,7 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 52, 32, 48 ), Rect2( 36, 52, 32, 48 ), Rect2( 72, 52, 32, 48 ), Rect2( 108, 52, 32, 48 ), Rect2( 144, 52, 32, 48 ), Rect2( 180, 52, 32, 48 ), Rect2( 216, 52, 32, 48 ), Rect2( 252, 52, 32, 48 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/path = NodePath("../body/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -988,7 +422,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("body/Sprite:position")
+tracks/2/path = NodePath("../body/Sprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1000,7 +434,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("body/Sword:monitoring")
+tracks/3/path = NodePath("../body/Sword:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1010,6 +444,572 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+
+[sub_resource type="Animation" id=16]
+
+resource_name = "AtackDown"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../body/Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 315, 42, 75 ), Rect2( 42, 315, 42, 75 ), Rect2( 84, 315, 42, 75 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../body/Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../body/Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../body/Sword:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../body/Sword:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 5.26316, 18.8771 ), Vector2( 2.94994, 24.7887 ), Vector2( 12.9739, 28.644 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../body/Sword:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ -74.1232, -74.1232, -91.2016 ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish_atack"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../body/Sword:collision_mask")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 0 ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finishCasting"
+} ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath("..")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_atack_cooldown"
+} ]
+}
+
+[sub_resource type="Animation" id=17]
+
+resource_name = "AtackLeft"
+length = 0.4
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../body/Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 39, 392, 87, 48 ), Rect2( 128, 392, 87, 48 ), Rect2( 217, 392, 87, 48 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../body/Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../body/Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -22, -2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../body/Sword:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -17.3973, 7.88807 ), Vector2( -25.0522, -3.01426 ), Vector2( -39.202, 3.71271 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../body/Sword:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 24.1989, 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../body/Sword:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish_atack"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../body/Sword:collision_mask")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 0 ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finishCasting"
+} ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath("..")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.35 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_atack_cooldown"
+} ]
+}
+
+[sub_resource type="Animation" id=18]
+
+resource_name = "AtackRight"
+length = 0.4
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../body/Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 39, 392, 87, 48 ), Rect2( 128, 392, 87, 48 ), Rect2( 217, 392, 87, 48 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../body/Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../body/Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 22, -2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../body/Sword:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 17.2206, 7.81224 ), Vector2( 25.9594, -4.01087 ), Vector2( 37.7825, 4.2139 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../body/Sword:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, -18.4753, -0.25612 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../body/Sword:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish_atack"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../body/Sword:collision_mask")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 0 ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finishCasting"
+} ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath("..")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.35 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_atack_cooldown"
+} ]
+}
+
+[sub_resource type="Animation" id=19]
+
+length = 0.4
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../body/Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 146, 315, 42, 75 ), Rect2( 188, 315, 42, 75 ), Rect2( 230, 315, 42, 75 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../body/Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../body/Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, -22 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../body/Sword:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../body/Sword:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.101, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -5.39752, -27.6571 ), Vector2( -1.52588e-005, -39.4802 ), Vector2( -8.22479, -45.3917 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../body/Sword:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -78.7586, -69.3368, -89.4917 ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish_atack"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../body/Sword:collision_mask")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 0 ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finishCasting"
+} ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath("..")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.35 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_atack_cooldown"
+} ]
+}
+
+[sub_resource type="Animation" id=33]
+
+resource_name = "Blink"
+length = 2.0
+loop = false
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.45 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finishCasting"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.45 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_blink_cooldown"
+} ]
 }
 
 [node name="Player" type="Node2D"]
@@ -1027,7 +1027,7 @@ motion/sync_to_physics = false
 [node name="Sprite" type="Sprite" parent="body"]
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 0, 315, 42, 75 )
+region_rect = Rect2( 84, 315, 42, 75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="body"]
 shape = SubResource( 1 )
@@ -1057,8 +1057,8 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 
 [node name="Sword" type="Area2D" parent="body"]
-position = Vector2( 5.26316, 18.8771 )
-rotation = -1.29369
+position = Vector2( 12.9739, 28.644 )
+rotation = -1.59177
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -1072,17 +1072,16 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="body/Sword"]
 shape = SubResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="HUD" parent="." instance=ExtResource( 3 )]
+
+[node name="Animations" type="Node2D" parent="."]
+
+[node name="AnimationMovement" type="AnimationPlayer" parent="Animations"]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/AtackDown = SubResource( 3 )
-anims/AtackLeft = SubResource( 4 )
-anims/AtackRight = SubResource( 5 )
-anims/AtackUp = SubResource( 6 )
-anims/Blink = SubResource( 7 )
 anims/IdleDown = SubResource( 8 )
 anims/IdleLeft = SubResource( 9 )
 anims/IdleRight = SubResource( 10 )
@@ -1093,6 +1092,25 @@ anims/WalkRight = SubResource( 14 )
 anims/WalkUp = SubResource( 15 )
 blend_times = [  ]
 
-[node name="HUD" parent="." instance=ExtResource( 3 )]
+[node name="AnimationSword" type="AnimationPlayer" parent="Animations"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/AtackDown = SubResource( 16 )
+anims/AtackLeft = SubResource( 17 )
+anims/AtackRight = SubResource( 18 )
+anims/AtackUp = SubResource( 19 )
+blend_times = [  ]
+
+[node name="AnimationBlink" type="AnimationPlayer" parent="Animations"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Blink = SubResource( 33 )
+blend_times = [  ]
 
 [connection signal="body_entered" from="body/Sword" to="." method="_on_Sword_body_entered"]
