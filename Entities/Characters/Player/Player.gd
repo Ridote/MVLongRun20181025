@@ -93,6 +93,7 @@ func animate():
 	var idle = false
 	
 	if attacking:
+		$Animations/AnimationMovement.stop()
 		match(prev_anim):
 			"WalkLeft", "IdleLeft":
 				$Animations/AnimationSword.play("AtackLeft")
