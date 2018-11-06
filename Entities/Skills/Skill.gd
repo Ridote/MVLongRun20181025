@@ -11,3 +11,9 @@ func play(_arg):
 
 func getCost():
 	return cost
+
+func getGlobalPosition():
+	OS.alert(get_name() + "getGlobalPosition not implemented", "Implementation error")
+
+func setGlobalPosition(_newPos):
+	OS.alert(get_name() + "setGlobalPosition not implemented", "Implementation error")

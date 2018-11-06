@@ -1,15 +1,68 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/Skills/Boomerang.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/Spritesheets/link_spritesheet.png" type="Texture" id=2]
 
-[node name="Blink" type="Node2D"]
+[sub_resource type="Curve" id=2]
+
+min_value = 0.0
+max_value = 3.0
+bake_resolution = 100
+_data = [ Vector2( 0, 3 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0688 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+
+flags = 4
+width = 2048
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+
+render_priority = 0
+trail_divisor = 9
+trail_size_modifier = SubResource( 3 )
+emission_shape = 1
+emission_sphere_radius = 14.91
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 1.0
+scale_random = 0.0
+color = Color( 0.227451, 0.286275, 0.756863, 1 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+
+[node name="Boomerang" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="body" type="KinematicBody2D" parent="."]
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 524300
 collision/safe_margin = 0.08
 motion/sync_to_physics = false
 
@@ -22,3 +75,30 @@ region_rect = Rect2( 85, 1306, 21, 20 )
 build_mode = 0
 polygon = PoolVector2Array( -11, 0, 0, 0, 0, 10, 11, 10, 11, -10, -11, -10 )
 
+[node name="Particles2D" type="Particles2D" parent="body"]
+emitting = true
+amount = 100
+lifetime = 3.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 10.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 1 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+
+[node name="ComeBack" type="Timer" parent="."]
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="ComeBack" to="." method="_on_ComeBack_timeout"]

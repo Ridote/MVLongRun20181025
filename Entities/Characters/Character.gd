@@ -13,7 +13,6 @@ func _ready():
 
 #float, float, first element in the tree (Node2D with script)
 func receiveDmg(_fis, _mag, _source):
-	print(get_groups())
 	OS.alert(get_name() + " receiveDmg not implemented", "Implementation error")
 
 func applyForce(_force, _source):
@@ -35,4 +34,8 @@ func die():
 	OS.alert(get_name() + "die not implemented", "Implementation error")
 	
 func playAnimation(_anim):
+	OS.alert(get_name() + "playAnimation not implemented", "Implementation error")
+
+#Returns the layer of the scene (1 for player, 2 for player skill, 4 for enemy, 8 for enemy skills, etc)
+func getId():
 	OS.alert(get_name() + "playAnimation not implemented", "Implementation error")

@@ -1,10 +1,11 @@
 extends "res://Entities/Characters/Character.gd"
 
 var blink_skill_factory = preload("res://Entities/Skills/Blink.tscn")
+var boomerang_skill_factory = preload("res://Entities/Skills/Boomerang.tscn")
 
 const FLOOR_NORMAL = Vector2(0, 1)
 const SLOPE_SLIDE_STOP = 25.0
-const WALK_SPEED = 250 # pixels/sec
+const WALK_SPEED = 150 # pixels/sec
 const SIDING_CHANGE_SPEED = 10
 const STOP_ANIMATION_THRESHOLD = 15
 
@@ -26,6 +27,9 @@ var attackCooldown = false
 
 var blinkAttemp = false
 var blinkCooldown = false
+
+var boomerangAttemp = false
+var boomerangCooldown = false
 
 var casting = false
 
@@ -60,17 +64,23 @@ func read_input():
 		target_vel.y -= 1
 	if Input.is_action_pressed("ui_down"):
 		target_vel.y = 1
-	if Input.is_action_just_pressed("ui_atack"):
+	if Input.is_action_just_pressed("ui_attack"):
 		attackAttemp = true
 	if Input.is_action_pressed("ui_blink"):
 		blinkAttemp = true
+	if Input.is_action_just_pressed("ui_boomerang"):
+		boomerangAttemp = true
 		
 	target_vel = target_vel.normalized()
 func process_skills():
-	if attackAttemp && !casting && !attackCooldown:
-		skill_sword_dash()
-	if blinkAttemp && !casting && !blinkCooldown:
-		skill_blink()
+	if !casting:
+		if attackAttemp && !attackCooldown:
+			skill_sword_dash()
+		else:
+			if blinkAttemp && !blinkCooldown:
+				skill_blink()
+			if boomerangAttemp && !boomerangCooldown:
+				skill_boomerang()
 
 func move(_delta):
 	if !attacking:
@@ -188,14 +198,42 @@ func reset_blink_cooldown():
 	blinkCooldown = false
 	blinkAttemp = false
 
+################################################ Boomerang
+func skill_boomerang():
+	var boomerang = boomerang_skill_factory.instance()
+	get_tree().get_root().add_child(boomerang)
+	boomerang.assign_parent(self)
+	if linear_vel.length() > 1:
+		boomerang.setGlobalPosition($body.global_position + linear_vel.normalized()*120)
+	else:
+		boomerang.setGlobalPosition($body.global_position + getOrientation()*120)
+	boomerangCooldown = true
+
+func reset_boomerang_cooldown():
+	boomerangCooldown = false
+
 ################################################ Position
 func getGlobalPosition():
 	return $body.global_position
 
 func setGlobalPosition(newPos):
 	$body.global_position = newPos
-	
+
+func getOrientation():
+	if "Down".is_subsequence_of(prev_anim):
+		return Vector2(0,-1)
+	if "Up".is_subsequence_of(prev_anim):
+		return Vector2(0,1)
+	if "Right".is_subsequence_of(prev_anim):
+		return Vector2(1,0)
+	if "Left".is_subsequence_of(prev_anim):
+		return Vector2(-1,0)
+	OS.alert(get_name() + " getOrientation failed, orientation not recognized \"" + prev_anim + "\"", "Runtime error")
+		
 ################################################ Aux
+func getId():
+	return 1
+
 func _on_Sword_body_entered(body):
 	var collider = body.get_parent()
 	if(collider.is_in_group(Constants.G_ENEMY)):

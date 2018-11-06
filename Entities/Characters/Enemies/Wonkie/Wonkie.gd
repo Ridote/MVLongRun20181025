@@ -49,7 +49,8 @@ func process_collisions():
 
 #Process a collision not detected by the enemy but by the external entity
 func process_external_collision(collider):
-	collider.receiveDmg(_fisAtack, _magAtack, self)
+	if collider.is_in_group(Constants.G_PLAYER):
+		collider.receiveDmg(_fisAtack, _magAtack, self)
 
 func receiveDmg(fis, mag, source):
 	var sourcePos = source.getGlobalPosition()
