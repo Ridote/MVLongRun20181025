@@ -7,7 +7,7 @@ const FLOOR_NORMAL = Vector2(0, 1)
 const SLOPE_SLIDE_STOP = 25.0
 const WALK_SPEED = 150 # pixels/sec
 const SIDING_CHANGE_SPEED = 10
-const STOP_ANIMATION_THRESHOLD = 15
+const STOP_ANIMATION_THRESHOLD = 5
 
 const EXTERNAL_IMPULSE = 4000
 const IMPULSE_MITIGATION_FACTOR = 2
@@ -64,12 +64,9 @@ func read_input():
 		target_vel.y -= 1
 	if Input.is_action_pressed("ui_down"):
 		target_vel.y = 1
-	if Input.is_action_just_pressed("ui_attack"):
-		attackAttemp = true
-	if Input.is_action_pressed("ui_blink"):
-		blinkAttemp = true
-	if Input.is_action_just_pressed("ui_boomerang"):
-		boomerangAttemp = true
+	attackAttemp = Input.is_action_just_pressed("ui_attack")
+	blinkAttemp = Input.is_action_pressed("ui_blink")
+	boomerangAttemp = Input.is_action_just_pressed("ui_boomerang")
 		
 	target_vel = target_vel.normalized()
 func process_skills():
@@ -121,14 +118,14 @@ func animate():
 				pass
 		return
 
-	if(abs(linear_vel.aspect()) > 1):
+	if (pow(linear_vel.x,2) > pow(linear_vel.y,2)):
 		if linear_vel.x < -STOP_ANIMATION_THRESHOLD:
 			anim = "WalkLeft"
 		elif linear_vel.x > STOP_ANIMATION_THRESHOLD:
 			anim = "WalkRight"
 		else:
 			idle = true
-	else:
+	elif(pow(linear_vel.y,2) > 1):
 		if linear_vel.y < -STOP_ANIMATION_THRESHOLD:
 			anim = "WalkUp"
 		elif linear_vel.y > STOP_ANIMATION_THRESHOLD:
@@ -144,7 +141,7 @@ func animate():
 			anim = "IdleUp"
 		elif(prev_anim.ends_with("Down")):
 			anim = "IdleDown"
-	if anim != prev_anim:
+	if anim != prev_anim && anim!="":
 		$Animations/AnimationMovement.play(anim)
 		prev_anim = anim
 
@@ -176,8 +173,6 @@ func finish_atack():
 
 func reset_atack_cooldown():
 	attackCooldown = false
-	#We reset any attemp to atack
-	attackAttemp = false
 	
 ################################################ Blink
 func skill_blink():
@@ -196,7 +191,6 @@ func skill_blink():
 
 func reset_blink_cooldown():
 	blinkCooldown = false
-	blinkAttemp = false
 
 ################################################ Boomerang
 func skill_boomerang():
@@ -204,9 +198,9 @@ func skill_boomerang():
 	get_tree().get_root().add_child(boomerang)
 	boomerang.assign_parent(self)
 	if linear_vel.length() > 1:
-		boomerang.setGlobalPosition($body.global_position + linear_vel.normalized()*120)
+		boomerang.setGlobalPosition($body.global_position + linear_vel.normalized()*32)
 	else:
-		boomerang.setGlobalPosition($body.global_position + getOrientation()*120)
+		boomerang.setGlobalPosition($body.global_position + getOrientation().normalized()*32)
 	boomerangCooldown = true
 
 func reset_boomerang_cooldown():
@@ -221,13 +215,13 @@ func setGlobalPosition(newPos):
 
 func getOrientation():
 	if "Down".is_subsequence_of(prev_anim):
-		return Vector2(0,-1)
+		return Vector2(0, 1)
 	if "Up".is_subsequence_of(prev_anim):
-		return Vector2(0,1)
+		return Vector2(0,-1)
 	if "Right".is_subsequence_of(prev_anim):
-		return Vector2(1,0)
+		return Vector2(1, 0)
 	if "Left".is_subsequence_of(prev_anim):
-		return Vector2(-1,0)
+		return Vector2(-1, 0)
 	OS.alert(get_name() + " getOrientation failed, orientation not recognized \"" + prev_anim + "\"", "Runtime error")
 		
 ################################################ Aux

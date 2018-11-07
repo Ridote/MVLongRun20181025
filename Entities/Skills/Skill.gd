@@ -3,6 +3,9 @@ extends Node
 var parent = null
 var cost = 5
 
+func _ready():
+	add_to_group(Constants.G_SKILL)
+
 func assign_parent(node):
 	parent = node
 

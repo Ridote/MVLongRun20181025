@@ -2,7 +2,7 @@ extends "res://Entities/Skills/Skill.gd"
 
 const FLOOR_NORMAL = Vector2(0, 1)
 const SLOPE_SLIDE_STOP = 25.0
-const WALK_SPEED = 250 # pixels/sec
+const WALK_SPEED = 350 # pixels/sec
 const SIDING_CHANGE_SPEED = 10
 const STOP_ANIMATION_THRESHOLD = 15
 
@@ -17,13 +17,9 @@ var direction = Vector2(0, 0)
 var target_vel = Vector2(0, 0)
 var linear_vel = Vector2(0, 0)
 
-var backing = false
+var onParentCollision = false
 
-func assign_parent(node):
-	.assign_parent(node)
-		
-	direction = (node.getGlobalPosition() - $body.global_position).normalized()
-	
+var backing = false
 
 func _physics_process(delta):
 	move(delta)
@@ -33,10 +29,13 @@ func move(delta):
 	if backing:
 		target_vel = (parent.getGlobalPosition() - $body.global_position).normalized() * WALK_SPEED
 	else:
+		direction = ($body.global_position - parent.getGlobalPosition()).normalized()
 		target_vel = WALK_SPEED*direction
 	
-	linear_vel.x = lerp(linear_vel.x, target_vel.x, 0.1)
-	linear_vel.y = lerp(linear_vel.y, target_vel.y, 0.1)
+	#linear_vel.x = lerp(linear_vel.x, target_vel.x, 0.1)
+	#linear_vel.y = lerp(linear_vel.y, target_vel.y, 0.1)
+	
+	linear_vel = target_vel
 	
 	#We clamp the linear velocity
 	linear_vel = linear_vel.clamped(MAX_SPEED_AND_IMPULSE)
@@ -46,15 +45,14 @@ func move(delta):
 	$body.rotate(delta*ROTATION_SPEED)
 
 func process_collisions():
+	if backing && onParentCollision:
+		parent.reset_boomerang_cooldown()
+		queue_free()
 	#We won't collide when backing
 	var collider = null
 	for i in range($body.get_slide_count()):
 		collider = $body.get_slide_collision(i).get_collider().get_parent()
-		if(collider.is_in_group(Constants.G_PLAYER) && backing):
-			parent.reset_boomerang_cooldown()
-			queue_free()
 		if(collider.is_in_group(Constants.G_ENEMY)):
-			print("Yo!!")
 			collider.process_external_collision(self)
 			backing = true
 		if(collider.is_in_group(Constants.G_WALL)):
@@ -69,5 +67,16 @@ func play(pos):
 
 func _on_ComeBack_timeout():
 	backing = true
-	#We add the father
-	$body.collision_mask |= parent.getId()
+	#We don't do anything when backing
+	$body.collision_layer = 0
+	$body.collision_mask = 0
+
+func _on_PlayerCollision_body_entered(body):
+	var collider = body.get_parent()
+	if collider == parent:
+		onParentCollision = true
+
+
+func _on_PlayerCollision_body_exited(body):
+	if body == parent:
+		onParentCollision = false
