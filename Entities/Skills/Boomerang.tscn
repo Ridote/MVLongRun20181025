@@ -1,53 +1,51 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/Skills/Boomerang.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/Spritesheets/link_spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Textures/circle.png" type="Texture" id=3]
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=2]
 
 offsets = PoolRealArray( 0, 1 )
-colors = PoolColorArray( 0.205307, 0.240083, 0.761719, 1, 1, 1, 1, 0.655137 )
+colors = PoolColorArray( 0, 0.176471, 1, 0.0784314, 0, 0.0823529, 1, 0.0196078 )
 
-[sub_resource type="GradientTexture" id=5]
+[sub_resource type="GradientTexture" id=3]
 
 flags = 4
-gradient = SubResource( 4 )
+gradient = SubResource( 2 )
 width = 2048
 
-[sub_resource type="Curve" id=1]
+[sub_resource type="Curve" id=4]
 
 min_value = 0.0
-max_value = 5.0
-bake_resolution = 500
-_data = [ Vector2( 0, 1.7112 ), 0.0, 0.0, 0, 0, Vector2( 1, 5 ), 0.744755, 0.0, 0, 0 ]
+max_value = 0.05
+bake_resolution = 100
+_data = [ Vector2( 0, 0.01928 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=2]
+[sub_resource type="CurveTexture" id=5]
 
 flags = 4
-width = 512
-curve = SubResource( 1 )
+width = 2048
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=1]
 
 render_priority = 0
-trail_divisor = 500
-trail_size_modifier = SubResource( 2 )
-trail_color_modifier = SubResource( 5 )
-emission_shape = 2
-emission_box_extents = Vector3( 1, 1, 1 )
+trail_divisor = 1
+emission_shape = 0
 flag_align_y = false
 flag_rotate_y = false
 flag_disable_z = true
 spread = 45.0
 flatness = 0.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 5.0
+initial_velocity = 50.0
 initial_velocity_random = 1.0
 angular_velocity = 0.0
 angular_velocity_random = 0.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-linear_accel = 0.0
+linear_accel = 100.0
 linear_accel_random = 0.0
 radial_accel = 0.0
 radial_accel_random = 0.0
@@ -57,9 +55,10 @@ damping = 0.0
 damping_random = 0.0
 angle = 0.0
 angle_random = 0.0
-scale = 2.0
+scale = 3.0
 scale_random = 0.0
-color = Color( 0.227451, 0.286275, 0.756863, 1 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -90,7 +89,7 @@ polygon = PoolVector2Array( -11, 0, 0, 0, 0, 10, 11, 10, 11, -10, -11, -10 )
 
 [node name="Particles2D" type="Particles2D" parent="body"]
 emitting = true
-amount = 100
+amount = 50
 lifetime = 0.5
 one_shot = false
 preprocess = 0.0
@@ -102,8 +101,8 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
-texture = null
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )
 normal_map = null
 h_frames = 1
 v_frames = 1

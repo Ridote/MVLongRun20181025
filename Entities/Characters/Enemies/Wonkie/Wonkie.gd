@@ -7,6 +7,9 @@ const SLOPE_SLIDE_STOP = 25.0
 const NEXT_POSITION_STOP_THRESHOLD = 7
 const EXTERNAL_IMPULSE = 4000
 const IMPULSE_MITIGATION_FACTOR = 2
+
+const MAX_SPEED_AND_IMPULSE = 400
+
 var nextPosition = Vector2(0,0)
 var externalImpulse = Vector2(0,0)
 
@@ -35,6 +38,8 @@ func move(_delta):
 	
 	linear_vel.x = lerp(linear_vel.x, target_vel.x + externalImpulse.x, 0.1)
 	linear_vel.y = lerp(linear_vel.y, target_vel.y + externalImpulse.y, 0.1)
+	
+	linear_vel = linear_vel.clamped(MAX_SPEED_AND_IMPULSE)
 	
 	linear_vel = $body.move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 

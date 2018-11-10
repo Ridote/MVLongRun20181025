@@ -198,10 +198,11 @@ func skill_boomerang():
 	get_tree().get_root().add_child(boomerang)
 	boomerang.assign_parent(self)
 	if linear_vel.length() > 1:
-		boomerang.setGlobalPosition($body.global_position + linear_vel.normalized()*32)
+		boomerang.play($body.global_position + linear_vel.normalized()*32)
 	else:
-		boomerang.setGlobalPosition($body.global_position + getOrientation().normalized()*32)
+		boomerang.play($body.global_position + getOrientation().normalized()*32)
 	boomerangCooldown = true
+	
 
 func reset_boomerang_cooldown():
 	boomerangCooldown = false
