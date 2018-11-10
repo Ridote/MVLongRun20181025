@@ -180,6 +180,7 @@ func skill_blink():
 	# the parent can be get_tree().get_root() or some other node
 	get_tree().get_root().add_child(blink)
 	if blink.getCost() > PlayerStats.player_energy:
+		blink.queue_free()
 		return
 	PlayerStats.player_energy -= blink.getCost()
 	blink.assign_parent(self)
@@ -195,6 +196,9 @@ func reset_blink_cooldown():
 ################################################ Boomerang
 func skill_boomerang():
 	var boomerang = boomerang_skill_factory.instance()
+	if boomerang.getCost() > PlayerStats.player_energy:
+		boomerang.queue_free()
+		return
 	get_tree().get_root().add_child(boomerang)
 	boomerang.assign_parent(self)
 	if linear_vel.length() > 1:
@@ -202,7 +206,7 @@ func skill_boomerang():
 	else:
 		boomerang.play($body.global_position + getOrientation().normalized()*32)
 	boomerangCooldown = true
-	
+	PlayerStats.player_energy -= boomerang.getCost()
 
 func reset_boomerang_cooldown():
 	boomerangCooldown = false

@@ -24,6 +24,7 @@ var backing = false
 func _ready():
 	fisDmg = 1
 	magDmg = 1
+	cost = 10
 
 func _physics_process(delta):
 	move(delta)

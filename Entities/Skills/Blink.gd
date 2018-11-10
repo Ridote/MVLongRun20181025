@@ -4,5 +4,6 @@ func _ready():
 	cost = 50
 
 func play(pos):
+	$Sprite.position = parent.getGlobalPosition()
 	parent.setGlobalPosition(pos)
-	queue_free()
+	$AnimationPlayer.play("Vanish")
